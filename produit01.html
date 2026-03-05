@@ -81,6 +81,17 @@
                     <p>Stock disponible : <strong>12 unités</strong></p>
                 </section>
 
+                <!-- Ajout au panier -->
+                <form class="panier-actions" method="POST" action="/panier/ajouter">
+                    <input type="hidden" name="produit" value="eau-de-roses">
+                    <label for="quantite" class="panier-label">Quantité</label>
+                    <div class="panier-row">
+                        <input type="number" id="quantite" name="quantite" min="1" max="12" value="1"
+                            class="panier-quantite">
+                        <button type="submit" class="btn-panier">Ajouter au panier</button>
+                    </div>
+                </form>
+
             </div>
 
         </article>

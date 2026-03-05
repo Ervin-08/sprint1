@@ -22,43 +22,62 @@
     <main>
         <h2>Nos Produits</h2>
 
+        <nav class="filtres" aria-label="Filtrer par famille olfactive">
+            <a href="produitsV2.html" class="filtre-btn">Tous</a>
+            <a href="#filtre-floral" class="filtre-btn">Floral</a>
+            <a href="#filtre-oriental" class="filtre-btn">Oriental</a>
+            <a href="#filtre-frais" class="filtre-btn">Frais</a>
+            <a href="#filtre-hiver" class="filtre-btn">Hiver</a>
+        </nav>
+
         <section id="liste-produits" aria-label="Liste des produits">
 
-            <article>
-                <a href="produit01.html">
-                    <img src="images/eau_de_roses.png" alt="Flacon du parfum Eau de Roses">
-                    <h3>Eau de Roses</h3>
-                    <p>Un parfum floral délicat aux notes de rose et jasmin.</p>
-                    <p>À partir de <strong>65,54 € TVAC</strong></p>
-                </a>
-            </article>
+            <div class="groupe-filtre" id="filtre-floral">
+                <article>
+                    <a href="produit01.html">
+                        <img src="images/eau_de_roses.png" alt="Flacon du parfum Eau de Roses">
+                        <h3>Eau de Roses</h3>
+                        <p>Un parfum floral délicat aux notes de rose et jasmin.</p>
+                        <p>À partir de <strong>65,54 € TVAC</strong></p>
+                    </a>
+                </article>
+            </div>
 
-            <article>
-                <a href="produit02.html">
-                    <img src="images/oud_mystere.png" alt="Flacon du parfum Oud Mystère">
-                    <h3>Oud Mystère</h3>
-                    <p>Un parfum oriental envoûtant aux notes de bois de oud et ambre.</p>
-                    <p>À partir de <strong>120,00 € TVAC</strong></p>
-                </a>
-            </article>
 
-            <article>
-                <a href="produit03.html">
-                    <img src="images/lumiere_agrumes.png" alt="Flacon du parfum Lumière d'Agrumes">
-                    <h3>Lumière d'Agrumes</h3>
-                    <p>Un parfum frais et pétillant aux notes de bergamote et citron.</p>
-                    <p>À partir de <strong>55,00 € TVAC</strong></p>
-                </a>
-            </article>
+            <div class="groupe-filtre" id="filtre-oriental">
+                <article>
+                    <a href="produit02.html">
+                        <img src="images/oud_mystere.png" alt="Flacon du parfum Oud Mystère">
+                        <h3>Oud Mystère</h3>
+                        <p>Un parfum oriental envoûtant aux notes de bois de oud et ambre.</p>
+                        <p>À partir de <strong>120,00 € TVAC</strong></p>
+                    </a>
+                </article>
+            </div>
 
-            <article>
-                <a href="produit04.html">
-                    <img src="images/nuit_veloutee.png" alt="Flacon du parfum Nuit Veloutée">
-                    <h3>Nuit Veloutée</h3>
-                    <p>Un parfum sensuel aux notes de vanille, musc et patchouli.</p>
-                    <p>À partir de <strong>95,00 € TVAC</strong></p>
-                </a>
-            </article>
+
+            <div class="groupe-filtre" id="filtre-frais">
+                <article>
+                    <a href="produit03.html">
+                        <img src="images/lumiere_agrumes.png" alt="Flacon du parfum Lumière d'Agrumes">
+                        <h3>Lumière d'Agrumes</h3>
+                        <p>Un parfum frais et pétillant aux notes de bergamote et citron.</p>
+                        <p>À partir de <strong>55,00 € TVAC</strong></p>
+                    </a>
+                </article>
+            </div>
+
+
+            <div class="groupe-filtre" id="filtre-hiver">
+                <article>
+                    <a href="produit04.html">
+                        <img src="images/souffle_hiver.png" alt="Flacon du parfum Souffle d'Hiver">
+                        <h3>Souffle d'Hiver</h3>
+                        <p>Un parfum hivernal aux notes de pin sylvestre, encens et bois de cachemire.</p>
+                        <p>À partir de <strong>88,00 € TVAC</strong></p>
+                    </a>
+                </article>
+            </div>
 
         </section>
     </main>

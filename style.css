@@ -106,11 +106,114 @@ main {
 }
 
 /* ─── PAGE PRODUITS — grille ────────────────── */
+/* Barre de filtres */
+.filtres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.filtre-btn {
+    display: inline-block;
+    padding: 0.45rem 1.1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border: 1px solid #111;
+    color: #111;
+    background: #fff;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.filtre-btn:hover {
+    background: #111;
+    color: #fff;
+}
+
+/* Bouton actif via :has() */
+#liste-produits:has(#filtre-floral:target)+* a[href="#filtre-floral"],
+#liste-produits:has(#filtre-oriental:target)+* a[href="#filtre-oriental"],
+#liste-produits:has(#filtre-frais:target)+* a[href="#filtre-frais"],
+#liste-produits:has(#filtre-hiver:target)+* a[href="#filtre-hiver"] {
+    background: #111;
+    color: #fff;
+}
+
+main:has(#filtre-floral:target) .filtre-btn[href="#filtre-floral"],
+main:has(#filtre-oriental:target) .filtre-btn[href="#filtre-oriental"],
+main:has(#filtre-frais:target) .filtre-btn[href="#filtre-frais"],
+main:has(#filtre-hiver:target) .filtre-btn[href="#filtre-hiver"] {
+    background: #111;
+    color: #fff;
+}
+
 #liste-produits {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 2.5rem;
 }
+
+
+/* Quand un filtre :target est actif, passer la grille en 1 colonne pleine
+   pour que le groupe-filtre ciblé occupe tout l'espace, puis la grille
+   interne du groupe reprend l'auto-fill */
+#filtre-floral:target,
+#filtre-oriental:target,
+#filtre-frais:target,
+#filtre-hiver:target {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Par défaut les groupe-filtre sont transparents (s'intègrent dans la grille) */
+.groupe-filtre {
+    display: contents;
+    /* les articles sont enfants directs de la grille */
+}
+
+/* Quand UN filtre est ciblé, masquer tous les groupe-filtre non ciblés */
+#filtre-floral:target~.groupe-filtre,
+#filtre-oriental:target~.groupe-filtre,
+#filtre-frais:target~.groupe-filtre,
+#filtre-hiver:target~.groupe-filtre {
+    display: none;
+}
+
+/* … mais toujours afficher le groupe ciblé lui-même */
+#filtre-floral:target,
+#filtre-oriental:target,
+#filtre-frais:target,
+#filtre-hiver:target {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Masquer aussi les groupes AVANT le groupe ciblé */
+:is(#filtre-floral, #filtre-oriental, #filtre-frais, #filtre-hiver):target {
+    /* réaffirmation : ce groupe est visible */
+    display: grid;
+}
+
+#liste-produits:has(#filtre-floral:target) .groupe-filtre:not(#filtre-floral),
+#liste-produits:has(#filtre-oriental:target) .groupe-filtre:not(#filtre-oriental),
+#liste-produits:has(#filtre-frais:target) .groupe-filtre:not(#filtre-frais),
+#liste-produits:has(#filtre-hiver:target) .groupe-filtre:not(#filtre-hiver) {
+    display: none;
+}
+
+/* Quand un filtre est actif, le groupe ciblé utilise display:grid */
+#liste-produits:has(:target) .groupe-filtre:target {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2.5rem;
+    grid-column: 1 / -1;
+}
+
 
 #liste-produits article a {
     display: block;
@@ -273,6 +376,71 @@ main {
 .produit-infos section strong {
     font-weight: 500;
 }
+
+/* ─── Bouton Ajouter au panier ──────────────── */
+.panier-actions {
+    padding-top: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.panier-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #888;
+}
+
+.panier-row {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.panier-quantite {
+    width: 70px;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid #111;
+    background: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #111;
+    text-align: center;
+    appearance: none;
+    -moz-appearance: textfield;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.panier-quantite:focus {
+    border-color: #555;
+}
+
+.btn-panier {
+    flex: 1;
+    padding: 0.85rem 1.6rem;
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #111;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.btn-panier:hover {
+    background-color: #fff;
+    color: #111;
+}
+
+.btn-panier:active {
+    opacity: 0.75;
+}
+
 
 /* ─── Footer ────────────────────────────────── */
 footer {
