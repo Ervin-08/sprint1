@@ -1,11 +1,5 @@
-/* ============================================
-   BOUTIQUE PARFUMS — Feuille de style partagée
-   Style : classique, noir & blanc, minimaliste
-   ============================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
 
-/* ─── Reset & base ─────────────────────────── */
 *,
 *::before,
 *::after {
@@ -30,7 +24,6 @@ body {
     flex-direction: column;
 }
 
-/* ─── Typographie ───────────────────────────── */
 h1,
 h2,
 h3 {
@@ -63,7 +56,6 @@ a {
     text-decoration: none;
 }
 
-/* ─── Header ────────────────────────────────── */
 header {
     display: flex;
     align-items: center;
@@ -96,7 +88,6 @@ header nav a:hover {
     border-bottom-color: #111;
 }
 
-/* ─── Main & layout ─────────────────────────── */
 main {
     flex: 1;
     max-width: 1200px;
@@ -105,8 +96,6 @@ main {
     padding: 4rem 2rem;
 }
 
-/* ─── PAGE PRODUITS — grille ────────────────── */
-/* Barre de filtres */
 .filtres {
     display: flex;
     flex-wrap: wrap;
@@ -132,7 +121,6 @@ main {
     color: #fff;
 }
 
-/* Bouton actif via :has() */
 #liste-produits:has(#filtre-floral:target)+* a[href="#filtre-floral"],
 #liste-produits:has(#filtre-oriental:target)+* a[href="#filtre-oriental"],
 #liste-produits:has(#filtre-frais:target)+* a[href="#filtre-frais"],
@@ -156,9 +144,6 @@ main:has(#filtre-hiver:target) .filtre-btn[href="#filtre-hiver"] {
 }
 
 
-/* Quand un filtre :target est actif, passer la grille en 1 colonne pleine
-   pour que le groupe-filtre ciblé occupe tout l'espace, puis la grille
-   interne du groupe reprend l'auto-fill */
 #filtre-floral:target,
 #filtre-oriental:target,
 #filtre-frais:target,
@@ -169,13 +154,10 @@ main:has(#filtre-hiver:target) .filtre-btn[href="#filtre-hiver"] {
     gap: 2.5rem;
 }
 
-/* Par défaut les groupe-filtre sont transparents (s'intègrent dans la grille) */
 .groupe-filtre {
     display: contents;
-    /* les articles sont enfants directs de la grille */
 }
 
-/* Quand UN filtre est ciblé, masquer tous les groupe-filtre non ciblés */
 #filtre-floral:target~.groupe-filtre,
 #filtre-oriental:target~.groupe-filtre,
 #filtre-frais:target~.groupe-filtre,
@@ -183,7 +165,6 @@ main:has(#filtre-hiver:target) .filtre-btn[href="#filtre-hiver"] {
     display: none;
 }
 
-/* … mais toujours afficher le groupe ciblé lui-même */
 #filtre-floral:target,
 #filtre-oriental:target,
 #filtre-frais:target,
@@ -193,9 +174,7 @@ main:has(#filtre-hiver:target) .filtre-btn[href="#filtre-hiver"] {
     gap: 2.5rem;
 }
 
-/* Masquer aussi les groupes AVANT le groupe ciblé */
 :is(#filtre-floral, #filtre-oriental, #filtre-frais, #filtre-hiver):target {
-    /* réaffirmation : ce groupe est visible */
     display: grid;
 }
 
@@ -206,7 +185,6 @@ main:has(#filtre-hiver:target) .filtre-btn[href="#filtre-hiver"] {
     display: none;
 }
 
-/* Quand un filtre est actif, le groupe ciblé utilise display:grid */
 #liste-produits:has(:target) .groupe-filtre:target {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -262,7 +240,6 @@ main:has(#filtre-hiver:target) .filtre-btn[href="#filtre-hiver"] {
     margin-top: 0.8rem;
 }
 
-/* ─── PAGE PRODUIT — fiche détail ───────────── */
 #fiche-produit {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -271,7 +248,6 @@ main:has(#filtre-hiver:target) .filtre-btn[href="#filtre-hiver"] {
     align-items: start;
 }
 
-/* H2 du produit : span large */
 #fiche-produit>h2 {
     grid-column: 1 / -1;
     font-size: 2.6rem;
@@ -300,7 +276,6 @@ main:has(#filtre-hiver:target) .filtre-btn[href="#filtre-hiver"] {
     text-transform: uppercase;
 }
 
-/* Colonne de droite : conteneur flex des sections */
 .produit-infos {
     display: flex;
     flex-direction: column;
@@ -334,7 +309,6 @@ main:has(#filtre-hiver:target) .filtre-btn[href="#filtre-hiver"] {
     color: #333;
 }
 
-/* Prix — liste définition */
 .produit-infos dl {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -353,7 +327,6 @@ main:has(#filtre-hiver:target) .filtre-btn[href="#filtre-hiver"] {
     color: #111;
 }
 
-/* Notes olfactives */
 .produit-infos [aria-label="Notes olfactives"] dl {
     gap: 0.6rem 1.5rem;
 }
@@ -372,12 +345,10 @@ main:has(#filtre-hiver:target) .filtre-btn[href="#filtre-hiver"] {
     color: #444;
 }
 
-/* Stock — emphase */
 .produit-infos section strong {
     font-weight: 500;
 }
 
-/* ─── Bouton Ajouter au panier ──────────────── */
 .panier-actions {
     padding-top: 1.6rem;
     display: flex;
@@ -442,7 +413,6 @@ main:has(#filtre-hiver:target) .filtre-btn[href="#filtre-hiver"] {
 }
 
 
-/* ─── Footer ────────────────────────────────── */
 footer {
     border-top: 1px solid #e0e0e0;
     text-align: center;
@@ -453,7 +423,6 @@ footer {
     text-transform: uppercase;
 }
 
-/* ─── Responsive ────────────────────────────── */
 @media (max-width: 768px) {
     header {
         padding: 1.2rem 1.5rem;
